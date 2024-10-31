@@ -22,3 +22,6 @@ npm-debug.log*
 
 # cypress
 *.mp4
+*lock.json
+cypress/
+cypress.*
