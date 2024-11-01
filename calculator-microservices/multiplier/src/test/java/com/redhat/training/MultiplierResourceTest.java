@@ -64,7 +64,7 @@ public class MultiplierResourceTest {
         Mockito.when(solverService.solve("3")).thenReturn(Float.valueOf("3"));
 
         //When
-        Executable multiplication = () -> multiplierResource.multiply("a", 3);
+        Executable multiplication = () -> multiplierResource.multiply("a", "3");
 //Then
         assertThrows(ResteasyWebApplicationException.class, multiplication);
     }
