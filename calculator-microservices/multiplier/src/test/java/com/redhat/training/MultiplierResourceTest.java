@@ -5,6 +5,13 @@ import static org.mockito.Mockito.mock;
 import com.redhat.training.service.SolverService;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.api.Test;
+
 
 public class MultiplierResourceTest {
     
@@ -15,5 +22,18 @@ public class MultiplierResourceTest {
     public void setup() {
         solverService = mock(SolverService.class);
         multiplierResource = new MultiplierResource(solverService);
+    }
+
+    @Test
+    public void simpleMultiplication() {
+        // Given
+        Mockito.when(solverService.solve("2")).thenReturn(Float.valueOf("2"));
+        Mockito.when(solverService.solve("3")).thenReturn(Float.valueOf("3"));
+
+        // When
+        Float result = multiplierResource.multiply("2", "3");
+
+        // Then
+        assertEquals( 6.0f, result );
     }
 }
